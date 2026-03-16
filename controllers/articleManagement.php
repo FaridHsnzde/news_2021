@@ -8,13 +8,14 @@ function viewArticlesController(){
 }
 
 function addArticleController(){
-    if(isset($_POST['newstitle'], $_POST['newstext'], $_POST['newstime'], $_POST['removedate'])){
+    if(isset($_POST['newstitle'], $_POST['newstext'], $_POST['newstime'], $_POST['removedate'], $_POST['section'])){
         $title = cleanUpInput($_POST['newstitle']);
         $text = cleanUpInput($_POST['newstext']);
         $time = cleanUpInput($_POST['newstime']);
         $removetime = cleanUpInput($_POST['removedate']);   
         $userid = $_SESSION["userid"];
-        addArticle($title, $text, $time, $removetime, $userid); 
+        $section = cleanUpInput($_POST['section']);
+        addArticle($title, $text, $time, $removetime, $userid, $section); 
         header("Location: /");    
     } else {
         require "views/newArticle.view.php";

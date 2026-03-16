@@ -10,6 +10,8 @@
     <input id="lname" type="text" name="lastname" maxlength=30>
     <label for="uname">Käyttäjänimi:</label>
     <input id="uname" type="text" name="username" maxlength=30>
+    <label for="birthday">Syntymäpäivä:</label>
+    <input id="birthday" type="date" name="birthday">
     <label for="pword">Salasana:</label>
     <input id="pword" type="password" name="password" maxlength=30>
     <input id="sendbutton" type="submit" value="Lähetä">

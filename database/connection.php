@@ -9,11 +9,11 @@ function connectDB(){
 }
 
 function connect() {
-        $host = getenv('DB_HOST', true) ?: "localhost";
+        $host = getenv('DB_HOST', true) ?: "farhas25.treok.io";
         $port = getenv('DB_PORT', true) ?: 3306; 
-        $dbname = getenv('DB_NAME', true) ?: "news"; 
-        $user = getenv('DB_USERNAME', true) ?: "root"; 
-        $password = getenv('DB_PASSWORD', true) ?: ""; 
+        $dbname = getenv('DB_NAME', true) ?: "farhas25_news"; 
+        $user = getenv('DB_USERNAME', true) ?: "farhas25_news"; 
+        $password = getenv('DB_PASSWORD', true) ?: "?TT-Ss+ZZdi]O?Cc"; 
 
         $connectionString = "mysql:host=$host;dbname=$dbname;port=$port;charset=utf8";
 

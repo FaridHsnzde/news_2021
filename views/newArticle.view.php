@@ -12,6 +12,12 @@
     <input id="date" type="datetime-local"  name="newstime" value=""> 
     <label for="rdate">Poistopäivä:</label>
     <input id="rdate" type="date" name="removedate" value="">
+    <label for="section">Osasto:</label>
+    <select name="section">
+        <option value="Kotimaa">Kotimaa</option>
+        <option value="Ulkomaat">Ulkomaat</option>
+        <option value="Viidhe">Viihde</option>
+    </select>
     <input id="sendbutton" type="submit" value="Lähetä">
 </form>
 </div>

@@ -9,10 +9,10 @@ function getAllArticles(){
     return $all;
 }
 
-function addArticle($title, $text, $time, $removetime, $userid){
+function addArticle($title, $text, $time, $removetime, $userid, $section){
     $pdo =connectDB();
-    $data = [$title, $text, $time, $removetime, $userid];
-    $sql = "INSERT INTO articles (title, text, created, expirydate, userid) VALUES(?,?,?,?,?)";
+    $data = [$title, $text, $time, $removetime, $userid, $section];
+    $sql = "INSERT INTO articles (title, text, section, created, expirydate, userid) VALUES(?,?,?,?,?,?)";
     $stm=$pdo->prepare($sql);
     return $stm->execute($data);
 }

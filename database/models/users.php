@@ -1,11 +1,11 @@
 <?php
 require_once "database/connection.php";
 
-function addUser($firstname, $lastname, $username, $password){
+function addUser($firstname, $lastname, $username, $birthday, $password){
     $pdo = connectDB();
     $hashedpassword = hashPassword($password);
-    $data = [$firstname, $lastname, $username, $hashedpassword];
-    $sql = "INSERT INTO users (firstname, lastname, username, password) VALUES(?,?,?,?)";
+    $data = [$firstname, $lastname, $username, $birthday, $hashedpassword];
+    $sql = "INSERT INTO users (firstname, lastname, username, birthday, password) VALUES(?,?,?,?,?)";
     $stm=$pdo->prepare($sql);
     return $stm->execute($data);
 }
