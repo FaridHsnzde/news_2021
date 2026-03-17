@@ -2,6 +2,16 @@
 
 <h2 class="centered">Lue uutiset</h2>
 
+<form method="post">
+    <label for="section">Osasto</label>
+    <select name="section">
+        <option value="Kotimaa">Kotimaa</option>
+        <option value="Ulkomaat">Ulkomaat</option>
+        <option value="Viidhe">Viihde</option>
+    </select>
+    <button type="submit">Hae</button>
+</form>
+
 <div class = "news">
 <?php
     foreach($allnews as $newsitem): ?>

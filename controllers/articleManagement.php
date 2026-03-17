@@ -3,7 +3,14 @@ require_once "database/models/article.php";
 require_once 'libraries/cleaners.php';
 
 function viewArticlesController(){
-    $allnews = getAllArticles();
+    $allnews = null;
+    if (isset($_POST['section'])) {
+        $section = cleanUpInput($_POST['section']);
+        $allnews = getSectionArticles($section);
+    }
+    else {
+        $allnews = getAllArticles();
+    }
     require "views/articles.view.php";    
 }
 
@@ -12,9 +19,9 @@ function addArticleController(){
         $title = cleanUpInput($_POST['newstitle']);
         $text = cleanUpInput($_POST['newstext']);
         $time = cleanUpInput($_POST['newstime']);
-        $removetime = cleanUpInput($_POST['removedate']);   
+        $removetime = cleanUpInput($_POST['removedate']);
+        $section = cleanUpInput($_POST['section']);   
         $userid = $_SESSION["userid"];
-        $section = cleanUpInput($_POST['section']);
         addArticle($title, $text, $time, $removetime, $userid, $section); 
         header("Location: /");    
     } else {

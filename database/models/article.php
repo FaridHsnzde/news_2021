@@ -9,10 +9,10 @@ function getAllArticles(){
     return $all;
 }
 
-function addArticle($title, $text, $time, $removetime, $userid, $section){
+function addArticle($title, $text, $time, $removetime, $section, $userid){
     $pdo =connectDB();
-    $data = [$title, $text, $time, $removetime, $userid, $section];
-    $sql = "INSERT INTO articles (title, text, section, created, expirydate, userid) VALUES(?,?,?,?,?,?)";
+    $data = [$title, $text, $time, $removetime, $section, $userid];
+    $sql = "INSERT INTO articles (title, text, created, expirydate, section, userid) VALUES(?,?,?,?,?,?)";
     $stm=$pdo->prepare($sql);
     return $stm->execute($data);
 }
@@ -33,10 +33,19 @@ function deleteArticle($id){
     return $stm->execute([$id]);
 }
 
-function updateArticle($title, $text, $time, $removetime, $articleid){
+function updateArticle($title, $text, $time, $removetime, $section, $articleid){
     $pdo = connectDB();
-    $data = [$title, $text, $time, $removetime, $articleid];
-    $sql = "UPDATE articles SET title = ?, text = ?, created = ?, expirydate = ? WHERE articleid = ?";
+    $data = [$title, $text, $time, $removetime, $section, $articleid];
+    $sql = "UPDATE articles SET title = ?, text = ?, created = ?, expirydate = ?, section = ? WHERE articleid = ?";
     $stm = $pdo->prepare($sql);
     return $stm->execute($data);
 }
+
+function getSectionArticles($section){
+    $pdo =connectDB();
+    $sql = "SELECT * FROM articles WHERE section = ?";
+    $stm=$pdo->prepare($sql);
+    $stm->execute(array($section));
+    $all = $stm->fetchAll(PDO::FETCH_ASSOC);
+    return $all;
+} 
